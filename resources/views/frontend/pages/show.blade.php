@@ -78,7 +78,7 @@
             @if (date("Y-m-d") >= $data_bless->start_date_bless  && date("Y-m-d") <= $data_bless->end_date_bless)
                 <div align="center">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-centered" style="padding-bottom: 20px;">
-                        <label style="font-size: 20px; color:white; font-weight: 100; ">
+                        <label style="font-size: 20px; color:{{ $data_bless->text_color }}; font-weight: 100; ">
                             ข้าพระพุทธเจ้า {{ $data_signature->name_surname }}
                         </label>
                     </div>
