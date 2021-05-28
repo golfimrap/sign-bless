@@ -14,8 +14,7 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.29",
-        "laravel/tinker": "^2.0",
-        "spatie/laravel-responsecache": "^6.6"
+        "laravel/tinker": "^2.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",

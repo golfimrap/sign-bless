@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Bless;
 use App\Signature;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Artisan;
 
 class IndexController extends Controller
 {
@@ -45,8 +44,6 @@ class IndexController extends Controller
         $field_signature->bless_id = $request->bless_id;
         $field_signature->name_surname = $request->name_surname;
         if ($field_signature->save()) {
-            Artisan::call('responsecache:clear');
-            Artisan::call('cache:clear');
 
             $signature_slug = Signature::select('slug')
                         ->where('id', $field_signature->id)

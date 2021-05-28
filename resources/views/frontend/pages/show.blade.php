@@ -83,7 +83,7 @@
                         </label>
                     </div>
                     
-                    <a href="https://ddc.moph.go.th/">
+                    <a href="https://ddc.moph.go.th/index.php">
                         <button class="button button2" type="submit">เข้าสู่เว็บไซต์</button>
                     </a>
                 </div>
