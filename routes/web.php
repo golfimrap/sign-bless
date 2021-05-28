@@ -4,6 +4,7 @@ use App\Http\Controllers\BackendController;
 use App\Http\Controllers\BlessController;
 use App\Http\Controllers\GetFileUploadController;
 use App\Http\Controllers\IndexController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
