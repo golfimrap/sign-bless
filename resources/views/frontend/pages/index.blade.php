@@ -87,6 +87,14 @@
                         <button class="button button2" type="submit">{{ $data_bless->button_text }}</button>
                     </div>
                 </form>
+            @else
+                <div align="center">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-centered">
+                        <a href="https://ddc.moph.go.th/index.php">
+                            <button class="button button2" type="submit">เข้าสู่เว็บไซต์</button>
+                        </a>
+                    </div>
+                </div>
             @endif
         </div>
     </div>
