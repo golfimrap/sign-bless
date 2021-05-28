@@ -12,7 +12,7 @@
     @if (!$data_bless == null)
         <style>
             body {
-                background-image: url('/storage/upload_images/backgrounds/{{ $data_bless->id }}/{{ $data_bless->file_background }}');
+                background-image: url('{{ asset('storage/upload_images/backgrounds/'.$data_bless->id.'/'.$data_bless->file_background) }}');
             }
             .textbox  { 
                 background: #f5f5f5; 

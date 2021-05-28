@@ -81,7 +81,7 @@
                     <div align="center">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-centered">
                             <label style="font-size: 20px; color:{{ $data_bless->text_color }}; font-weight: 100; ">ข้าพระพุทธเจ้า</label>
-                            <input class="textbox" type="text" name="name_surname" placeholder="ชื่อ - นามสกุล">
+                            <input class="textbox" type="text" name="name_surname" placeholder="ชื่อ - นามสกุล" required>
                             <input type="hidden" name="bless_id" value="{{ $data_bless->id }}">
                         </div>
                         <button class="button button2" type="submit">{{ $data_bless->button_text }}</button>
