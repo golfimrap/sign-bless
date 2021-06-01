@@ -40,16 +40,22 @@ class IndexController extends Controller
      */
     public function store(Request $request)
     {
-        $field_signature = new Signature;
-        $field_signature->bless_id = $request->bless_id;
-        $field_signature->name_surname = $request->name_surname;
-        if ($field_signature->save()) {
+        $slug_name = Signature::select('slug')->where('name_surname', $request->name_surname)->first();
 
-            $signature_slug = Signature::select('slug')
-                        ->where('id', $field_signature->id)
-                        ->first();
+        if ($slug_name == null) {
+            $field_signature = new Signature;
+            $field_signature->bless_id = $request->bless_id;
+            $field_signature->name_surname = $request->name_surname;
+            if ($field_signature->save()) {
 
-            return redirect()->route('index.sign.show', [$signature_slug->slug]);
+                $signature_slug = Signature::select('slug')
+                            ->where('id', $field_signature->id)
+                            ->first();
+
+                return redirect()->route('index.sign.show', [$signature_slug->slug]);
+            }
+        } else {
+            return redirect()->route('index.sign.show', [$slug_name->slug]);
         }
     }
 
