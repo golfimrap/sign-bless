@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Bless;
 use App\Signature;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class IndexController extends Controller
 {
@@ -16,10 +17,23 @@ class IndexController extends Controller
     public function index()
     {
         $data_bless = Bless::where('status', 1)->first();
-        
-        return view('frontend.pages.index', compact([
-            'data_bless'
-        ]));
+
+        if ($data_bless != null) {
+            if (date("Y-m-d") > $data_bless->end_date_bless) {
+                $field_bless = Bless::find($data_bless->id);
+                $field_bless->status = 0;
+
+                if ($field_bless->save()) {
+                    return Redirect::to('https://ddc.moph.go.th/index.php');
+                }
+            } else {
+                return view('frontend.pages.index', compact([
+                    'data_bless'
+                ]));
+            }
+        } else {
+            return Redirect::to('https://ddc.moph.go.th/index.php');
+        }
     }
 
     /**
