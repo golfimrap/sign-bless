@@ -180,8 +180,7 @@ class BlessController extends Controller
             if ($del_clean) {
                 $file_text_ori = $request->file('file_text');
                 $file_text_new = time().rand(1,1000).".".$file_text_ori->getClientOriginalExtension();
-                $file_text_ori->storeAs('public/upload_images/texts/'.$field_bless->id, $file_text_new);
-
+                $upload_file = $file_text_ori->storeAs('public/upload_images/texts/'.$field_bless->id, $file_text_new);
                 if ($upload_file) {
                     $field_bless->file_text = $file_text_new;
                 }
