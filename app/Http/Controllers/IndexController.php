@@ -54,22 +54,21 @@ class IndexController extends Controller
      */
     public function store(Request $request)
     {
-        $slug_name = Signature::select('slug')->where('name_surname', $request->name_surname)->first();
-
-        if ($slug_name == null) {
+        $data_name_surname = Signature::where('name_surname', $request->name_surname)->where('bless_id', $request->bless_id)->first();
+       
+        if ($data_name_surname == null) {
             $field_signature = new Signature;
             $field_signature->bless_id = $request->bless_id;
             $field_signature->name_surname = $request->name_surname;
             if ($field_signature->save()) {
 
-                $signature_slug = Signature::select('slug')
-                            ->where('id', $field_signature->id)
+                $signature_slug = Signature::where('id', $field_signature->id)
                             ->first();
 
-                return redirect()->route('index.sign.show', [$signature_slug->slug]);
+                return redirect()->route('index.sign.show', [$signature_slug->bless_id, $signature_slug->name_surname]);
             }
         } else {
-            return redirect()->route('index.sign.show', [$slug_name->slug]);
+            return redirect()->route('index.sign.show', [$data_name_surname->bless_id, $data_name_surname->name_surname]);
         }
     }
 
@@ -79,12 +78,11 @@ class IndexController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($bless_id, $name_surname)
     {
-        // dd($slug);
-        $data_signature = Signature::where('slug', $slug)->first();
+        $data_signature = Signature::where('name_surname', $name_surname)->where('bless_id', $bless_id)->first();
         $data_bless = Bless::where('id', $data_signature->bless_id)->first();
-        
+        // dd($data_signature);
         return view('frontend.pages.show', compact([
             'data_bless',
             'data_signature'

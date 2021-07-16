@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 Route::group([], function() {
     Route::get('/', [IndexController::class, 'index'])->name('index');
     Route::post('signBless', [IndexController::class, 'store'])->name('index.sign.store');
-    Route::get('signatureBless/{slug}', [IndexController::class, 'show'])->name('index.sign.show');
+    Route::get('signatureBless/{bless_id}/{name_surname}', [IndexController::class, 'show'])->name('index.sign.show');
     
 });
 
